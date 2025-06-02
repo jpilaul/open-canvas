@@ -42,7 +42,7 @@ Open Canvas requires the following API keys and external services:
 
 - [Supabase](https://supabase.com/) account for authentication
 
-#### LangGraph Server
+#### Temporal
 
 - [LangGraph CLI](https://langchain-ai.github.io/langgraph/cloud/reference/cli/) for running the graph locally
 
@@ -85,9 +85,9 @@ After this, navigate to the `Authentication` page, and the `Providers` tab. Make
 
 To verify authentication works, run `yarn dev` and visit [localhost:3000](http://localhost:3000). This should redirect you to the [login page](http://localhost:3000/auth/login). From here, you can either login with Google or GitHub, or if you did not configure these providers, navigate to the [signup page](http://localhost:3000/auth/signup) and create a new account with an email and password. This should then redirect you to a conformation page, and after confirming your email you should be redirected to the [home page](http://localhost:3000).
 
-### Setup LangGraph Server
+### Setup Temporal
 
-Now we'll cover how to setup and run the LangGraph server locally.
+Now we'll cover how to setup and run Temporal locally.
 
 Follow the [`Installation` instructions in the LangGraph docs](https://langchain-ai.github.io/langgraph/cloud/reference/cli/#installation) to install the LangGraph CLI.
 
@@ -101,7 +101,7 @@ Ready!
 - 🎨 Studio UI: https://smith.langchain.com/studio?baseUrl=http://localhost:54367
 ```
 
-After your LangGraph server is running, execute the following command to start the Open Canvas app:
+After Temporal is running, execute the following command to start the Open Canvas app:
 
 ```bash
 yarn dev
@@ -148,11 +148,11 @@ Then, set the `NEXT_PUBLIC_OLLAMA_ENABLED` environment variable to `true`, and t
 
 Below are some common issues you may run into if running Open Canvas yourself:
 
-- **I have the LangGraph server running successfully, and my client can make requests, but no text is being generated:** This can happen if you start & connect to multiple different LangGraph servers locally in the same browser. Try clearing the `oc_thread_id_v2` cookie and refreshing the page. This is because each unique LangGraph server has its own database where threads are stored, so a thread ID from one server will not be found in the database of another server.
+- **I have Temporal running successfully, and my client can make requests, but no text is being generated:** This can happen if you start & connect to multiple different Temporals locally in the same browser. Try clearing the `oc_thread_id_v2` cookie and refreshing the page. This is because each unique Temporal has its own database where threads are stored, so a thread ID from one server will not be found in the database of another server.
 
-- **I'm getting 500 network errors when I try to make requests on the client:** Ensure you have the LangGraph server running, and you're making requests to the correct port. You can specify the port to use by passing the `--port <PORT>` flag to the `npx @langchain/langgraph-cli dev` command, and you can set the URL to make requests to by either setting the `LANGGRAPH_API_URL` environment variable, or by changing the fallback value of the `LANGGRAPH_API_URL` variable in `constants.ts`.
+- **I'm getting 500 network errors when I try to make requests on the client:** Ensure you have Temporal running, and you're making requests to the correct port. You can specify the port to use by passing the `--port <PORT>` flag to the `npx @langchain/langgraph-cli dev` command, and you can set the URL to make requests to by either setting the `LANGGRAPH_API_URL` environment variable, or by changing the fallback value of the `TEMPORAL_API_URL` variable in `constants.ts`.
 
-- **I'm getting "thread ID not found" error toasts when I try to make requests on the client:** Ensure you have the LangGraph server running, and you're making requests to the correct port. You can specify the port to use by passing the `--port <PORT>` flag to the `npx @langchain/langgraph-cli dev` command, and you can set the URL to make requests to by either setting the `LANGGRAPH_API_URL` environment variable, or by changing the fallback value of the `LANGGRAPH_API_URL` variable in `constants.ts`.
+- **I'm getting "thread ID not found" error toasts when I try to make requests on the client:** Ensure you have Temporal running, and you're making requests to the correct port. You can specify the port to use by passing the `--port <PORT>` flag to the `npx @langchain/langgraph-cli dev` command, and you can set the URL to make requests to by either setting the `LANGGRAPH_API_URL` environment variable, or by changing the fallback value of the `TEMPORAL_API_URL` variable in `constants.ts`.
 
 - **`Model name is missing in config.` error is being thrown when I make requests:** This error occurs when the `customModelName` is not specified in the config. You can resolve this by setting the `customModelName` field inside `config.configurable` to the name of the model you want to use when invoking the graph. See [this doc](https://langchain-ai.github.io/langgraphjs/how-tos/configuration/) on how to use configurable fields in LangGraph.
 
