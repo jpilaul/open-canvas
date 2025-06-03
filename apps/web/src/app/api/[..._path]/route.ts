@@ -1,4 +1,4 @@
-import { LANGGRAPH_API_URL } from "../../../constants";
+import { TEMPORAL_API_URL } from "../../../constants";
 import { NextRequest, NextResponse } from "next/server";
 import { Session, User } from "@supabase/supabase-js";
 import { verifyUserAuthenticated } from "../../../lib/supabase/verify_user_server";
@@ -65,14 +65,14 @@ async function handleRequest(req: NextRequest, method: string) {
     }
 
     const res = await fetch(
-      `${LANGGRAPH_API_URL}/${path}${queryString}`,
+      `${TEMPORAL_API_URL}/${path}${queryString}`,
       options
     );
 
     if (res.status >= 400) {
       console.error(
         "ERROR IN PROXY",
-        `${LANGGRAPH_API_URL}/${path}${queryString}`,
+        `${TEMPORAL_API_URL}/${path}${queryString}`,
         res.status,
         res.statusText
       );

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Client } from "@langchain/langgraph-sdk";
-import { LANGGRAPH_API_URL } from "@/constants";
+import { TEMPORAL_API_URL } from "@/constants";
 import { verifyUserAuthenticated } from "../../../../lib/supabase/verify_user_server";
 
 export async function POST(req: NextRequest) {
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
   const lgClient = new Client({
     apiKey: process.env.LANGCHAIN_API_KEY,
-    apiUrl: LANGGRAPH_API_URL,
+    apiUrl: TEMPORAL_API_URL,
   });
 
   try {
